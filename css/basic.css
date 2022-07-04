@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+body { font-family:Arial, Helvetica, sans-serif; }
+
+main { display:flex; width:100%; height:100vh;
+    background:#000; }
+
+header {  width:20%; padding:10vh 7vw; 
+    display:flex;
+    flex-wrap:wrap;     /*부모영역이 요소들의 가로 합보다 작았을때 세로로 정렬*/
+    justify-content:center; /*가로축은 중앙으로 배치*/
+    align-content:space-between;    /*세로축 상단 하나 양 끝에 요소 배치*/
+    z-index: 3;  
+}
+header h1 {color: #fff;  text-align: center; }
+header h1 i {font-size: 5vw; }
+header h1 span {font-size: 0.7vw; line-height: 1px;}
+header address { color: #fff; text-align: center; font: normal 12px/1.6 "Arial";}
+
+
+nav { position:absolute; top:10vh; right:5vw; z-index: 3; }
+nav ul { display:flex;}
+
+nav a { color:#fff; font-size:24px; margin-right:1.5vw; }
+
+section {position: relative; display: flex; margin-top: 15vh; width:80%;
+z-index: 1;  }
+
+article {position: relative; flex: 1; padding: 70px 40px 100px; opacity: 0.6; transition: opacity 1s, flex 1s; cursor: pointer;} 
+
+article::before {position: absolute; content: ""; width: 80%; height: 95%;
+background: rgba(51, 51, 51, 0.8); top: 0; left: -200px; z-index: -1; opacity: 0;
+transition: 1s;}
+
+article:hover:before { left: 0; opacity: 1;}
+
+article .inner {display: flex; width: 100%; height: 100%; flex-wrap: wrap; align-content: space-between;}
+
+article .txt {width: 100%;}
+article .txt h2 {color: #fff; 
+font: normal 2vw/1 'Sriracha'; transition: 1s; margin-bottom:40px; padding-top: 50px;}
+article .txt h2:after { display:block; content:""; width:40px; height:2px;
+    background: #bbb; margin-top:20px; transition: 1.5s; }
+article .txt p {color: #fff; font: normal 16px/1.2 'Sriracha';}
+
+article figure {width: 100%; height: 16vh; filter:saturate(10%); transition: 1.5s;
+}
+article video{ width: 100%;  height:100%; object-fit: cover;  transform:scale(1.1); 
+    }
+
+article:hover {flex:1.5; opacity: 1;}
+article:hover figure {height: 28vh; filter:saturate(120%); transform: translateY(3vh);}
+
+article:hover .txt h2 {font-size: 4vw; padding-top: 0;}
+article:hover .txt h2:after {  width:200px; 
+    background: lightgreen;  }
+
+
+aside {display: flex; justify-content: space-between;
+    position: absolute; top: 0; left: -100%; width: 100%; height: 100vh;
+    opacity: 0; transition:1s;
+    background: #515151; z-index: 2; padding: 20vh 7vw 15vh 20vw;}
+
+aside .txt {width: 25%; height: 100%;}
+aside .txt h2 {font: normal 4vw/1 'Sriracha'; color: #000; margin-bottom: 20px;}
+aside .txt p {font: normal 20px/1.2 'Sriracha'; color: #000; margin-bottom:100px;}
+aside .txt span {color: #fff; cursor: pointer;}
+
+aside figure {width: 70%;}
+aside video {width: 100%; height: 100%; object-fit: cover;}
+
+aside.on {left: 0; opacity: 1;}
